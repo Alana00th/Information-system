@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="section-top">
+        <img src="{% static 'img/1.png' %}" class="img-responsive" width="2034" height="1011">
+    </div>
+    <div class="section section1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        Новые поступления
+                    </h1>
+                </div>
+                {% for product_image in products_images reversed %}
+                    {% if forloop.counter < 5 %}
+                    {% include 'landing/product_item.html' %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="section section-delivery">
+        <div>
+            <h3>
+                <p>В нашем магазине «ArtHouse» вы найдете любые товары для художников, за качество которых мы ручаемся.</p>
+                <p>Мольберты, кисти и все все, что необходимо вам для самовыражения в любом виде живописи.</p>
+                <p>У нас одни из самых низких цен. Поэтому купив у нас раз, вы гарантированно вернетесь еще.</p></h3>
+        </div>
+    </div>
+    <div class="section section2 phones-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        Наши товары
+                    </h1>
+                </div>
+                {% for product_image in products_images %}
+                    {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{#    <div class="section section3 laptops-container">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
+{#                    <h1 class="text-center">#}
+{#                        #}
+{#                    </h1>#}
+{#                </div>#}
+{#                {% for product_image in products_images_laptops %}#}
+{#                    {% include 'landing/product_item.html' %}#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{% endblock %}
+

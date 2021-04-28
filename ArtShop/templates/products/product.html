@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                {% for image_item in product.productimage_set.all %}
+                    <div class="product-image-item">
+                        <img src="{{ image_item.image.url }}"  class="img-responsive" style="border-radius: 5%">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-6">
+                <h1 class="text-center" style="margin: 7%">
+                    {{ product.name }}
+                </h1>
+                <div class="">
+                    <p>
+                        Цена: {{ product.price }}
+                    </p>
+                </div>
+                <div>
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#description" aria-controls="home" role="tab" data-toggle="tab">
+                                Описание
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">
+                                Доставка
+                            </a>
+                        </li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Пожелания</a></li>
+{#                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>#}
+                      </ul>
+
+                      <!-- Tab panes -->
+                      <div class="tab-content product-description-tabs">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            <p>{{ product.description }}</p>
+                            <p></p>
+                            <form id="form_buying_product" class="form-inline" action="{% url 'basket_adding' %}">{% csrf_token %}
+                        <div class="form-group">
+                             <input type="number" class="form-control" name="number" id="number">
+                        </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" id="submit_btn" class="btn btn-success btn-buy"
+                                    data-product_id = "{{ product.id }}"
+                                    data-name ="{{ product.name }}"
+                                    data-price ="{{ product.price }}"
+                                >
+                                    Купить
+                                </button>
+                            </div>
+
+                    </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="delivery">
+                            <p><h4>Мы заинтересованы в том, чтобы доставить Ваш заказ в максимально сжатые сроки. Доставляем 7 дней в неделю и 24 часа в сутки.</h4>
+<p>Самый лучший, надежный, качественный, экономичный и моментальный способ оформления заказа - это позвонить нам по 8 (495) 775-04-75  с 9:00 до 20:00.</p>
+
+
+<h4>Работа с корпоративными клиентами, дополнительные услуги нашей компании, в том числе с видами и условиями доставки, кроме регионов Российской Федерации - об этом информация в соответствующем разделе</h4>
+<p>Хотим обратить Ваше внимание на то, что заказы в которых от 2-3х и более одинаковых позиций товара или от 3-х и более товаров из основных каталогов* осуществляется несколькими доставками или в особом порядке и с особым вниманием через корпоративный отдел нашей компании. Цена по безналичному расчету/или оптовому прайс-листу может отличаться от цен сайта. Цена отличается из-за многих причин, в том числе из-за объема закупки. К сожалению, мы не имеем возможности прописать это на сайте, так как работаем с каждым клиентом по индивидуальной схеме и всегда стараемся сделать так, чтобы клиент оставался довольным и постоянным. Пожалуйста, уточняйте цену у Вашего менеджера. По согласованию с менеджером возможна ночная доставка за 178 руб., "экспресс" в течение дня за 398 руб. или "срочная" за 494 руб. в течение нескольких часов. Разгрузка и подъем любого товара от 20 см и более имеет фиксированную стоимость в сумме 94 руб., независимо от этажа, а также существует наценка за доставку второго (и далее любого кол-ва) товара (за исключением товаров до 300 грамм/аксессуаров) в одном заказе в размере всего 68 руб.. </p>
+<h4>Хотите все знать? У нас можно!</h4>
+<p> Ждем Ваших заказов!</p>
+
+
+</p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <h3>Пожелания</h3>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                      </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

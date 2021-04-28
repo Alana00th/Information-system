@@ -1,0 +1,36 @@
+<div class="col-lg-3">
+    <div class="product-item" height="400">
+        <div>
+            <a href="{% url 'product' product_image.product.id %}">
+                <img src="{{ product_image.image.url }}" class="img-rounded" width="240" height="200">
+            </a>
+        </div>
+{#<img src="/media/products_images/Sherlok_dLHqLPm.jpg" class="img-rounded" width="240" height="200">#}
+        {% if product_image.product.discount %}
+            <div class="discount-container">
+                <span>{{ product_image.product.discount }}%</span>
+            </div>
+        {% endif %}
+
+        <h4>{{ product_image.product.name }}</h4>
+        <p class="text">
+            {{ product_image.product.short_description|truncatechars_html:70 }}
+        </p>
+        <div class="price">
+            {{ product_image.product.price }} Руб.
+        </div>
+        <div class="add-to-card-btn">
+
+                <a href="{% url 'product' product_image.product.id %}">
+                <button type="submit" id="submit_btn" class="url(r'^', include('orders.urls')),tn btn-success btn-buy"
+                    data-product_id = "{{ product_image.product.id }}"
+                    data-name ="{{ product_image.product.name }}"
+                    data-price ="{{ product_image.product.price }}"
+                    style="height:40px;width:100px">
+                Купить
+            </button>
+                 </a>
+
+        </div>
+    </div>
+</div>
